@@ -2,6 +2,13 @@
 name = "netraffic"
 version = "0.1.0"
 edition = "2021"
+categories = ["network-programming"]
+keywords = ["statistics", "traffic", "network", "port"]
+homepage = "https://github.com/ZingerLittleBee/netraffic"
+repository = "https://github.com/ZingerLittleBee/netraffic"
+description = "netraffic is a rust library that provides ability to statistics network traffic."
+readme = "README.md"
+license = "MIT"
 
 [dependencies]
 pcap = "0.9.2"
