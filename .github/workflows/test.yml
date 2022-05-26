@@ -13,12 +13,8 @@ jobs:
         name: Rust Test
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions-rs/toolchain@v1
-              with:
-                  toolchain: stable
-            - run: sudo apt-get -y update && sudo apt-get -y install libpcap-dev telnet
+            - run: sudo su
+            - run: curl https://sh.rustup.rs -sSf | sh -s -- -y
+            - run: apt-get -y update && apt-get -y install libpcap-dev telnet
             - uses: actions/checkout@v2
-            - name: Setup tmate session
-              uses: mxschmitt/action-tmate@v3
-            # - run: sudo /home/runner/.cargo/bin/cargo test
+            - run: ~/.cargo/bin/cargo test
