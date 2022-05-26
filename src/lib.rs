@@ -157,7 +157,6 @@ impl Traffic {
                 match rx.try_recv() {
                     Ok(action) => match action {
                         Action::Suspend => {
-                            println!("{} Suspend", &filter.rule[..]);
                             match rx.recv() {
                                 Ok(inner_action) => match inner_action {
                                     Action::Stop => break,
