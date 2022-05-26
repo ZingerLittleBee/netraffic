@@ -17,5 +17,5 @@ jobs:
             - uses: actions-rs/toolchain@v1
               with:
                   toolchain: stable
-            - run: sudo apt-get -y update && apt-get -y install libpcap-dev telnet
+            - run: sudo apt-get -y update && sudo apt-get -y install libpcap-dev telnet
             - run: sudo cargo test -- --nocapture
