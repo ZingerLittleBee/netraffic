@@ -14,10 +14,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: sudo su
-            - run: curl https://sh.rustup.rs -sSf | sh -s -- -y
+            - run: curl https://sh.rustup.rs -sSf | sudo sh -s -- -y
             - run: sudo apt-get -y update && sudo apt-get -y install libpcap-dev telnet
             - name: Setup tmate session
               uses: mxschmitt/action-tmate@v3
             - uses: actions/checkout@v2
-            - run: ~/.cargo/bin/cargo test
+            - run: sudo ~/.cargo/bin/cargo test
