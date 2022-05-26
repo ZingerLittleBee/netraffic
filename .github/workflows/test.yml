@@ -18,5 +18,4 @@ jobs:
               with:
                   toolchain: stable
             - run: sudo apt-get -y update && sudo apt-get -y install libpcap-dev telnet
-            - run: which cargo
-            - run: sudo /home/ubuntu/.cargo/bin/cargo test
+            - run: sudo /home/runner/.cargo/bin/cargo test
