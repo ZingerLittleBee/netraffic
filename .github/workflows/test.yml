@@ -13,12 +13,11 @@ jobs:
         name: Rust Test
         runs-on: ubuntu-latest
         steps:
-            - name: Use Docker in rootless mode.
-              uses: ScribeMD/rootless-docker@0.1.2
             - uses: actions/checkout@v2
+            - run: sudo su
             - run: curl https://sh.rustup.rs -sSf | sh -s -- -y
+            - run: sudo apt-get -y update && sudo apt-get -y install libpcap-dev telnet
             - name: Setup tmate session
               uses: mxschmitt/action-tmate@v3
-            - run: apt-get -y update && apt-get -y install libpcap-dev telnet
             - uses: actions/checkout@v2
             - run: ~/.cargo/bin/cargo test
