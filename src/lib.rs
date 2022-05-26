@@ -161,19 +161,18 @@ impl Traffic {
                             match rx.recv() {
                                 Ok(inner_action) => match inner_action {
                                     Action::Stop => break,
-                                    _ => println!("{} Resume", &filter.rule[..]),
+                                    // Resume
+                                    _ => {}
                                 },
                                 Err(_) => break,
                             }
                         }
                         Action::Stop => {
-                            println!("{} Stop", &filter.rule[..]);
                             break;
                         }
                         _ => {}
                     },
                     Err(TryRecvError::Disconnected) => {
-                        println!("{} terminating", &filter.rule[..]);
                         break;
                     }
                     Err(TryRecvError::Empty) => {}
@@ -201,17 +200,65 @@ mod test {
     use crate::{Filter, Traffic};
 
     #[test]
-    fn it_works() {
+    fn test_get_data() {
         let mut traffic = Traffic::new();
-        traffic.add_listener(Filter::new(String::from("any"), String::from("port 443")));
+        traffic.add_listener(Filter::new(String::from("any"), String::from("port 53")));
         Command::new("telnet")
-            .args(["baidu.com", "443"])
+            .args(["8.8.8.8", "53"])
             .output()
             .unwrap();
 
         thread::sleep(Duration::from_millis(100));
         assert!(traffic.get_data().len() > 0);
-        assert!(traffic.get_data().get("port 443").unwrap().len > 0);
-        assert!(traffic.get_data().get("port 443").unwrap().total > 0);
+        assert!(traffic.get_data().get("port 53").unwrap().len > 0);
+        assert!(traffic.get_data().get("port 53").unwrap().total > 0);
+        assert!(traffic.try_get_data().unwrap().len() > 0);
+    }
+
+    #[test]
+    fn test_suspend_resume_listener() {
+        let rule = "port 53";
+        let mut traffic = Traffic::new();
+        traffic.add_listener(Filter::new(String::from("any"), String::from(rule)));
+        Command::new("telnet")
+            .args(["8.8.8.8", "53"])
+            .output()
+            .unwrap();
+        thread::sleep(Duration::from_millis(100));
+        traffic.suspend_listener(rule.to_string());
+        let total = traffic.get_data().get(rule).unwrap().total;
+        Command::new("telnet")
+            .args(["8.8.8.8", "53"])
+            .output()
+            .unwrap();
+        thread::sleep(Duration::from_millis(100));
+        assert_eq!(traffic.get_data().get(rule).unwrap().total, total);
+        traffic.resume_listener(rule.to_string());
+        Command::new("telnet")
+            .args(["8.8.8.8", "53"])
+            .output()
+            .unwrap();
+        thread::sleep(Duration::from_millis(100));
+        assert!(traffic.get_data().get(rule).unwrap().total > total);
+    }
+
+    #[test]
+    fn test_remove_listener() {
+        let rule = "port 53";
+        let mut traffic = Traffic::new();
+        traffic.add_listener(Filter::new(String::from("any"), String::from(rule)));
+        Command::new("telnet")
+            .args(["8.8.8.8", "53"])
+            .output()
+            .unwrap();
+        thread::sleep(Duration::from_millis(100));
+        traffic.remove_listener(rule.to_string());
+        let length = traffic.get_data().get(rule).unwrap().len;
+        Command::new("telnet")
+            .args(["8.8.8.8", "53"])
+            .output()
+            .unwrap();
+        thread::sleep(Duration::from_millis(100));
+        assert_eq!(traffic.get_data().get(rule).unwrap().len, length);
     }
 }
