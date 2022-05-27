@@ -17,7 +17,19 @@ Language : [🇺🇸 English](./README.md) | 🇨🇳 简体中文
 </div>
 
 ## Overview
-netraffic is a rust library that provides ability to **statistics network traffic**.
+`netraffic` 是一个 `rust` 库，提供**统计网络流量**的功能。
+
+## 先决条件
+### `Windows`
+下载 [WinPcap](http://www.winpcap.org/install/default.htm) 开发者包, 添加 `/Lib` 或 `/Lib/x64` 目录到系统环境变量中
+
+### `Linux`
+安装 `libpcap`
+
+Debian 系 Linux, 通过 `apt install libpcap-dev`
+
+### `Mac OS X`
+Mac OS X 默认安装 `libpcap`
 
 ## Installation
 1. Get the latest version -> https://crates.io/crates/netraffic

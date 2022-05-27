@@ -19,6 +19,18 @@ Language : [🇺🇸 English](./README.md) | 🇨🇳 简体中文
 ## Overview
 netraffic is a rust library that provides ability to **statistics network traffic**.
 
+## Prerequisites
+### Windows
+Download the [WinPcap](http://www.winpcap.org/install/default.htm) Developer's Pack. Add the `/Lib` or `/Lib/x64` folder to your LIB environment variable.
+
+### Linux
+Install `libpcap`
+
+On Debian based Linux, `apt install libpcap-dev`
+
+### Mac OS X
+libpcap should be installed on Mac OS X by default.
+
 ## Installation
 1. Get the latest version -> https://crates.io/crates/netraffic
 
