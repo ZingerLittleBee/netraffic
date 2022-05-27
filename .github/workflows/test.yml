@@ -18,8 +18,8 @@ jobs:
         name: Rust Test
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - run: curl https://sh.rustup.rs -sSf | sudo sh -s -- -y
             - run: sudo apt-get -y update && sudo apt-get -y install libpcap-dev telnet
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - run: sudo ~/.cargo/bin/cargo test
