@@ -1,4 +1,4 @@
-Language : [🇺🇸 English](./README.md) | 🇨🇳 简体中文
+Language : 🇺🇸 English | [🇨🇳 简体中文](./README.zh-CN.md)
 
 <h1 align="center">netraffic</h1>
 <div align="center">
