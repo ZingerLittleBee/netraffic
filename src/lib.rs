@@ -1,4 +1,4 @@
-mod device;
+pub mod device;
 
 use std::{
     collections::HashMap,
@@ -13,7 +13,6 @@ use std::{
 pub struct Filter {
     pub device: String,
     pub rule: String,
-    pub direction: Direction,
     pub immediate_mode: bool,
 }
 
@@ -22,7 +21,6 @@ impl Filter {
         Filter {
             device,
             rule,
-            direction: Direction::InOut,
             immediate_mode: true,
         }
     }
@@ -30,9 +28,9 @@ impl Filter {
 
 #[derive(Debug, Clone, Copy)]
 pub struct Snapshot {
-    total: u64,
-    len: u64,
-    timestamp: u64,
+    pub total: u64,
+    pub len: u64,
+    pub timestamp: u64,
 }
 
 impl Default for Snapshot {
@@ -75,6 +73,11 @@ impl Traffic {
 
     /// Add a new filter to the traffic data center.
     pub fn add_listener(&mut self, filter: Filter) {
+        // init map
+        self.data_center
+            .write()
+            .unwrap()
+            .insert(filter.rule.clone(), Snapshot::default());
         let (rule, tx) = self.resigster(filter);
         self.signal.insert(rule, tx);
     }
@@ -138,18 +141,6 @@ impl Traffic {
             // BPF syntax, look at https://biot.com/capstats/bpf.html
             cap.filter(&filter.rule[..], true)
                 .expect("set filter failed");
-            // set capture direction
-            match filter.direction {
-                Direction::InOut => cap
-                    .direction(pcap::Direction::InOut)
-                    .expect("set direction failed"),
-                Direction::In => cap
-                    .direction(pcap::Direction::In)
-                    .expect("set direction failed"),
-                Direction::Out => cap
-                    .direction(pcap::Direction::Out)
-                    .expect("set direction failed"),
-            };
             // (index, Snapshot)
             let mut i: (u32, Snapshot) = (0, Default::default());
             while let Ok(packet) = cap.next() {
