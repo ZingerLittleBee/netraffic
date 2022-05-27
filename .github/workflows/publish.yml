@@ -21,6 +21,8 @@ jobs:
                   toolchain: stable
                   override: true
 
+            - run: sudo apt-get -y update && sudo apt-get -y install libpcap-dev
+
             - name: Publish to crate 🎉
               run: cargo publish --token ${CRATES_TOKEN}
               env:
