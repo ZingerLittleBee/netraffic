@@ -44,17 +44,10 @@ impl Default for Snapshot {
 }
 
 #[derive(Debug, Clone, Copy)]
-pub enum Action {
+enum Action {
     Suspend,
     Resume,
     Stop,
-}
-
-#[derive(Debug, Clone, Copy)]
-pub enum Direction {
-    InOut,
-    In,
-    Out,
 }
 
 #[derive(Debug, Clone)]
@@ -64,6 +57,7 @@ pub struct Traffic {
 }
 
 impl Traffic {
+    /// Init traffic
     pub fn new() -> Self {
         Traffic {
             data_center: Arc::new(RwLock::new(HashMap::new())),
