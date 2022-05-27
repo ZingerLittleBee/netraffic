@@ -7,9 +7,8 @@ fn main() {
     // rule look here: https://biot.com/capstats/bpf.html
     let rule1 = "port 443";
     let rule2 = "src host 127.0.0.1";
-    // device: "any", just for linux mac
-    traffic.add_listener(Filter::new("any".to_string(), rule1.to_string()));
-    traffic.add_listener(Filter::new("any".to_string(), rule2.to_string()));
+    traffic.add_listener(Filter::new("eth0".to_string(), rule1.to_string()));
+    traffic.add_listener(Filter::new("eth0".to_string(), rule2.to_string()));
     loop {
         thread::sleep(Duration::from_millis(1000));
         println!(

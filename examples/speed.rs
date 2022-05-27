@@ -5,7 +5,7 @@ use netraffic::{Filter, Traffic};
 fn main() {
     let mut traffic = Traffic::new();
     let rule = "port 5000 or tcp port 443";
-    traffic.add_listener(Filter::new("en0".to_string(), rule.to_string()));
+    traffic.add_listener(Filter::new("eth0".to_string(), rule.to_string()));
     loop {
         let pre = traffic.get_data().get(rule).unwrap().total;
         thread::sleep(Duration::from_millis(1000));
