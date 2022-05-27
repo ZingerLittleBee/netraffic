@@ -73,8 +73,6 @@ fn main() {
 ## Goods
 struct -> [Traffic](#traffic) · [Filter](#filter) · [Snapshot](#snapshot)
 
-enum -> [Action](#action)
-
 mod (`device`) -> [get_device](#get_device) · [get_default_device](#get_default_device)
 
 ## Documentation

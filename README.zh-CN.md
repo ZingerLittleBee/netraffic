@@ -16,7 +16,7 @@ Language : [🇺🇸 English](./README.md) | 🇨🇳 简体中文
 
 </div>
 
-## Overview
+## 简介
 `netraffic` 是一个 `rust` 库，提供**统计网络流量**的功能。
 
 ## 先决条件
@@ -31,16 +31,16 @@ Debian 系 Linux, 通过 `apt install libpcap-dev`
 ### `Mac OS X`
 Mac OS X 默认安装 `libpcap`
 
-## Installation
-1. Get the latest version -> https://crates.io/crates/netraffic
+## 安装
+1. 获取最新版本 -> https://crates.io/crates/netraffic
 
-2. Add the dependent
+2. 添加到 `Cargo.toml`
 ```toml
 [dependencies]
 netraffic = "0.1.0"
 ```
 
-3. Usage
+3. 用法
 ```rust
 use std::{thread, time::Duration};
 use netraffic::{Filter, Traffic};
@@ -68,15 +68,15 @@ fn main() {
     }
 }
 ```
-> Learn More [Examples](#examples)
+> 查看更多 [Examples](#examples)
 
 
-## Goods
+## 总览
 struct -> [Traffic](#traffic) · [Filter](#filter) · [Snapshot](#snapshot)
 
 mod (`device`) -> [get_device](#get_device) · [get_default_device](#get_default_device)
 
-## Documentation
+## 文档
 ### `Traffic`
 ```rust
 impl Traffic {
@@ -148,7 +148,7 @@ pub fn get_default_device() -> Result<Device, Error>
 ```
 
 
-## Examples
+## 例子
 [🖥 获取网卡列表](./examples/device.rs)
 
 [🚥 流量统计](./examples/traffic.rs)
@@ -157,5 +157,5 @@ pub fn get_default_device() -> Result<Device, Error>
 
 
 
-## Thanks
+## 感谢
 [pcap](https://github.com/rust-pcap/pcap)
