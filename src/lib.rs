@@ -72,7 +72,7 @@ impl Traffic {
             .write()
             .unwrap()
             .insert(filter.rule.clone(), Snapshot::default());
-        let (rule, tx) = self.resigster(filter);
+        let (rule, tx) = self.register(filter);
         self.signal.insert(rule, tx);
     }
 
@@ -120,7 +120,7 @@ impl Traffic {
         }
     }
 
-    fn resigster(&self, filter: Filter) -> (String, Sender<Action>) {
+    fn register(&self, filter: Filter) -> (String, Sender<Action>) {
         let total = self.data_center.clone();
         // Control the thread
         let (tx, rx) = mpsc::channel::<Action>();

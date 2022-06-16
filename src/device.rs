@@ -1,11 +1,11 @@
 use pcap::{Device, Error};
 
 pub fn get_device() -> Result<Vec<Device>, Error> {
-    pcap::Device::list()
+    Device::list()
 }
 
 pub fn get_default_device() -> Result<Device, Error> {
-    pcap::Device::lookup()
+    Device::lookup()
 }
 
 #[cfg(test)]
