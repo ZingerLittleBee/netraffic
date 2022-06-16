@@ -69,6 +69,12 @@ fn main() {
 ```
 > Learn More [Examples](#examples)
 
+## Examples
+[🖥 Get network interface device](./examples/device.rs)
+
+[🚥 Statistical traffic](./examples/traffic.rs)
+
+[🚄 Calculate network speed](./examples/speed.rs)
 
 ## Goods
 struct -> [Traffic](#traffic) · [Filter](#filter) · [Snapshot](#snapshot)
@@ -145,16 +151,6 @@ pub fn get_device() -> Result<Vec<Device>, Error>
 /// Get default network interface
 pub fn get_default_device() -> Result<Device, Error>
 ```
-
-
-## Examples
-[🖥 Get network interface device](./examples/device.rs)
-
-[🚥 Statistical traffic](./examples/traffic.rs)
-
-[🚄 Calculate network speed](./examples/speed.rs)
-
-
 
 ## Thanks
 [pcap](https://github.com/rust-pcap/pcap)

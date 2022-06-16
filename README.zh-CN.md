@@ -70,6 +70,12 @@ fn main() {
 ```
 > 查看更多 [Examples](#examples)
 
+## 例子
+[🖥 获取网卡列表](./examples/device.rs)
+
+[🚥 流量统计](./examples/traffic.rs)
+
+[🚄 实时网速](./examples/speed.rs)
 
 ## 总览
 struct -> [Traffic](#traffic) · [Filter](#filter) · [Snapshot](#snapshot)
@@ -146,16 +152,6 @@ pub fn get_device() -> Result<Vec<Device>, Error>
 /// 获取默认网卡
 pub fn get_default_device() -> Result<Device, Error>
 ```
-
-
-## 例子
-[🖥 获取网卡列表](./examples/device.rs)
-
-[🚥 流量统计](./examples/traffic.rs)
-
-[🚄 实时网速](./examples/speed.rs)
-
-
 
 ## 感谢
 [pcap](https://github.com/rust-pcap/pcap)
