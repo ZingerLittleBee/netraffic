@@ -3,16 +3,16 @@ Language : [🇺🇸 English](./README.md) | 🇨🇳 简体中文
 <h1 align="center">netraffic</h1>
 <div align="center">
 
-[![Build Status](https://img.shields.io/crates/v/netraffic)](https://crates.io/crates/netraffic)
-![Crates Downloads](https://img.shields.io/crates/d/netraffic)
-![Last Commit](https://img.shields.io/github/last-commit/ZingerLittleBee/netraffic)
+[![Build Status](https://img.shields.io/crates/v/netraffic?style=for-the-badge)](https://crates.io/crates/netraffic)
+![Crates Downloads](https://img.shields.io/crates/d/netraffic?style=for-the-badge)
+![Last Commit](https://img.shields.io/github/last-commit/ZingerLittleBee/netraffic?style=for-the-badge)
 
 </div>
 <div align="center">
 
-[![Docs](https://img.shields.io/docsrs/netraffic)](https://docs.rs/netraffic/0.1.0/netraffic/)
-[![GitHub Actions CI](https://img.shields.io/github/workflow/status/ZingerLittleBee/netraffic/Test%20CI)](https://github.com/ZingerLittleBee/netraffic/actions)
-[![LICENSE](https://img.shields.io/crates/l/netraffic)](./LICENSE)
+[![Docs](https://img.shields.io/docsrs/netraffic?style=for-the-badge)](https://docs.rs/netraffic/0.1.0/netraffic/)
+[![GitHub Actions CI](https://img.shields.io/github/actions/workflow/status/ZingerLittleBee/netraffic/test.yml?style=for-the-badge)](https://github.com/ZingerLittleBee/netraffic/actions)
+[![LICENSE](https://img.shields.io/crates/l/netraffic?style=for-the-badge)](./LICENSE)
 
 </div>
 
